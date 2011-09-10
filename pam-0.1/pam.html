@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+</HEAD>
+<div id="abc">
+<auth name="Hello World">
+
+</auth>
+</div>
+<BODY id="bodyId">
+<img src="/home/home/Pictures/prianka.jpg" alt="no image" width="1000" height="125" />
+<embed id="embed1" type="application/mozilla-npruntime-scriptable-plugin"><br>
+<script language="javascript">
+var plugin1=document.getElementById("embed1");
+function add()
+{
+var vij=document.forms[0].elements[0].value;
+var res,res1;
+
+	res1=plugin1.Auth(vij,"search");
+
+	if(res1=="yes")
+	{
+		alert("Authentication Needed");
+		res=plugin1.Auth(vij,"pri");
+		if(res=="noface")
+			alert("No face detected");
+		else if(res!="default")
+			document.forms[0].elements[1].value=res;
+	}
+	
+}
+
+
+
+function add1()
+{
+
+var vij=document.forms[0].elements[0].value;
+var res,res1;
+
+	res1=plugin1.Auth(vij,"search");
+
+	if(res1=="no")
+	{
+		var y=window.confirm("Remember Password");
+		if(y==true)
+		{
+			var x=document.forms[0].elements[1].value
+			var res2=plugin1.Auth(vij,"train",x);
+			if(res2=="yes")
+			{
+				alert("training successful");
+			}
+			else
+			{
+				alert("training unsuccessful");
+			}
+		}	
+	}
+
+}
+</script>
+<br>
+<form action="http://www.fisat.ac.in">
+<label>Username:</label>
+<input type="text" value="" />
+<br>
+<label>Password:</label>
+<input type="password" value="" onClick="add()" />
+<input type="submit" value="Submit This Form" onClick="add1()" />
+</form>
+<img src="/home/home/Pictures/prianka.jpg" alt="no image" width="1000" height="129" />
+</BODY>
+</HTML>
